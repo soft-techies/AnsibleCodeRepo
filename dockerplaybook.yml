@@ -1,0 +1,15 @@
+- name: Install Docker
+  hosts: jenkins,app
+  become: yes
+  tasks:
+    - name:  Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Start and enable Docker
+      systemd:
+        name: docker.io
+        state: started
+        enabled: yes
+        
